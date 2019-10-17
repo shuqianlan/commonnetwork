@@ -30,10 +30,12 @@ class PopupLoadingWindow(private val mContext: Context) : PopupWindow(mContext) 
 		height = (mWindowWidth*0.4).toInt()
 		isOutsideTouchable = true
 		isFocusable = true
+
 		setAnimationStyle(R.style.PopUpWindowAnim);
 		setBackgroundDrawable(ColorDrawable(Color.BLACK))
-		val v = LayoutInflater.from(mContext).inflate(R.layout.window_executing_loading, null, false)
-		contentView = v
+		LayoutInflater.from(mContext).inflate(R.layout.window_executing_loading, null, false).also {
+			contentView = it
+		}
 
 		initialize()
 	}
