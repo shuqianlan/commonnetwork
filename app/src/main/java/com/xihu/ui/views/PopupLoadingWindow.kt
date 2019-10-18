@@ -29,8 +29,10 @@ class PopupLoadingWindow(private val mContext: Context) : PopupWindow(mContext) 
 		width = (mWindowWidth*0.4).toInt()
 		height = (mWindowWidth*0.4).toInt()
 		isOutsideTouchable = true
+		isTouchable = true
 		isFocusable = true
 
+		setTouchInterceptor { v, event -> return@setTouchInterceptor true } // 拦截点击事件!
 		setAnimationStyle(R.style.PopUpWindowAnim);
 		setBackgroundDrawable(ColorDrawable(Color.BLACK))
 		LayoutInflater.from(mContext).inflate(R.layout.window_executing_loading, null, false).also {

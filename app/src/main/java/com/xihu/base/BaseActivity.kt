@@ -38,6 +38,11 @@ abstract class BaseActivity: AppCompatActivity(), CoroutineScope by MainScope() 
             }
         }
 
+        println("popupWindow.visible: ${popWindow?.isShowing ?: false}")
+        if ((popWindow?.isShowing ?: false)) {
+            return false
+        }
+
         return super.dispatchTouchEvent(ev)
     }
 
